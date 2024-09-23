@@ -9,9 +9,9 @@ const Login = () => {
 
   const [emailId,setEmailId] = useState("advik@gmail.com");
   const [password,setPassword] = useState("Ra@11111111");
+  const [error,setError] = useState("")
+
   const navigate = useNavigate();
-
-
   const dispatch = useDispatch();
 
   const handleLogin = async()=>{
@@ -23,7 +23,7 @@ const Login = () => {
     dispatch(addUser(res.data))
    return navigate("/")
   }catch(err){
-    console.error(err)
+    setError(err?.response?.data|| "Something went wrong")
   }
 
   }
@@ -59,6 +59,7 @@ const Login = () => {
 </label>
 
     </div>
+    <p className="text-red-500">{error}</p>
     <div className="card-actions justify-center my-2">
       <button className="btn btn-primary" onClick={handleLogin}>Login</button>
     </div>
