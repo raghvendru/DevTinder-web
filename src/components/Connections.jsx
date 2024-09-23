@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { addConnections } from "../utils/connectionSlice";
 const Connections = () => {
   const dispatch = useDispatch();
   const connections = useSelector((store) => store.connections);
+
 
   const fetchConnections = async () => {
     try {
@@ -36,7 +37,7 @@ const Connections = () => {
             <div>
               <img
                 alt={`${firstName} ${lastName}'s profile`}
-                className="w-20 h-20 rounded-full"
+                className="w-20 h-20 rounded-full object-cover"
                 src={photoUrl}
               />
             </div>
